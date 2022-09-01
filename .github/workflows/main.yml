@@ -1,0 +1,21 @@
+name: Strapi Docker
+
+on:
+  push:
+   branches: [ main ]
+  pull_request:
+    branches: [ main ]
+      
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build & Push Image
+      working-directory: strapi-v4
+      run: |
+        echo "${{ secrets.DOCKERPW }}" | docker login -u "marioperna" --password-stdin
+        docker image build -t strapi/v4:latest .
+        docker push strapi/v4:latest
