@@ -14,6 +14,5 @@ jobs:
       - name: Push image to GitHub Container Registry
         working-directory: strapi-v4
         run: |
-          docker image build -t strapi-v4:latest .
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/strapi-v4:latest        
           docker push $IMAGE_ID
