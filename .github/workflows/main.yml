@@ -8,11 +8,13 @@ jobs:
   login:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v1
       - name: Log into GitHub Container Registry
         run: echo "${{ secrets.GTHB_TOKEN }}" | docker login https://ghcr.io -u ${{ github.actor }} --password-stdin
-
+      
       - name: Push image to GitHub Container Registry
         working-directory: strapi-v4
         run: |
+          docker build -t strapi-v4-image .
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/strapi-v4:latest        
           docker push $IMAGE_ID
