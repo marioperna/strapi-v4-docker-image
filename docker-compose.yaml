@@ -1,0 +1,15 @@
+version: "3"
+services:
+  strapi:
+    container_name: strapi
+    build: ./strapi-v4
+    restart: unless-stopped
+    volumes:
+      - ./config:/opt/app/config
+      - ./src:/opt/app/src
+      - ./package.json:/opt/package.json
+      - ./package.lock:/opt/package.lock # Replace with package-lock.json if using npm
+      - ./.env:/opt/app/.env
+      - ./strapi-data:/opt/app/.tmp
+    ports:
+      - "1337:1337"
