@@ -23,7 +23,7 @@ jobs:
 
     - name: Build the Docker image
       working-directory: strapi-v4/
-      run: docker build . --file Dockerfile --tag strapi-v4:$(date +%s)
+      run: docker build . --file Dockerfile --tag marioperna/strapi-v4:$(date +%s)
 
     - name: Docker Push
       run: docker push ${{secrets.DOCKER_USER}}/marioperna/strapi-v4
