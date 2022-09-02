@@ -22,8 +22,7 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - name: Build the Docker image
       working-directory: strapi-v4/
-      run: docker build . --file Dockerfile --tag strapi-v4:$(date +%s)
+      run: | 
+        docker build . --file Dockerfile --tag strapi-v4:$(date +%s)
+        docker push ${{secrets.DOCKER_USER}}/strapi-v4
       
-    - name: Docker Push
-      working-directory: strapi-v4/
-      run: docker push ${{secrets.DOCKER_USER}}/strapi-v4
