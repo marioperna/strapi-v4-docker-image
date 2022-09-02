@@ -35,4 +35,4 @@ jobs:
           context: strapi-v4
           file: ./strapi-v4/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/hellodocker:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/strapi-v4:latest
